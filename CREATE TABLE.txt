@@ -1,0 +1,64 @@
+CREATE TABLE users (
+  id INT NOT NULL AUTO_INCREMENT PRIMARY KEY,
+  name VARCHAR(100),
+  email VARCHAR(100) UNIQUE,
+  password VARCHAR(255)
+);
+
+CREATE TABLE cart (
+  id INT NOT NULL AUTO_INCREMENT PRIMARY KEY,
+  user_id INT,
+  product_id INT,
+  quantity INT DEFAULT 1,
+  FOREIGN KEY (user_id) REFERENCES users(id),
+  FOREIGN KEY (product_id) REFERENCES products(id)
+);
+
+
+CREATE TABLE cart_items (
+  id int(11) NOT NULL,
+  user_id int(11) DEFAULT NULL,
+  product_id int(11) DEFAULT NULL,
+  quantity int(11) DEFAULT NULL
+);
+
+CREATE TABLE orders (
+  id INT NOT NULL AUTO_INCREMENT PRIMARY KEY,
+  user_id INT,
+  total_price DECIMAL(10,2),
+  created_at DATETIME DEFAULT CURRENT_TIMESTAMP
+);
+
+
+CREATE TABLE order_items (
+  id INT NOT NULL AUTO_INCREMENT PRIMARY KEY,
+  order_id INT,
+  product_id INT,
+  quantity INT,
+  price DECIMAL(10,2)
+);
+
+
+CREATE TABLE products (
+  id INT NOT NULL AUTO_INCREMENT PRIMARY KEY,
+  name VARCHAR(100),
+  description TEXT,
+  price DECIMAL(10,2),
+  image VARCHAR(255)
+);
+
+
+
+
+INSERT INTO products (name, description, price, image) VALUES
+('Graduation Gown', 'Premium quality graduation gown with TARUMT logo.', 99.90, 'gown.jpg'),
+('Graduation Cap', 'Elegant black cap for your convocation.', 29.90, 'cap.jpg'),
+('Souvenir', 'Cute souvenir', 15.00, 'souvenir.jpg'),
+('Photo Frame', 'Wooden frame for graduation photos.', 19.90, 'frame.jpg'),
+('Keychain', 'Metal keychain with TARUMT emblem.', 9.90, 'keychain.jpg'),
+('Graduation Flower Bouquet', 'Fresh flower bouquet wrapped in ribbon', 45.00, 'flower.jpg'),
+('Graduation Bear', 'Cute graduation bear with cap and sash', 35.00, 'bear.jpg'),
+('Sash Ribbon', 'Decorative ribbon with "Graduate" text', 20.00, 'ribbon.jpg');
+
+
+
