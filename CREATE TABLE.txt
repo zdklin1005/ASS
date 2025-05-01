@@ -14,14 +14,6 @@ CREATE TABLE cart (
   FOREIGN KEY (product_id) REFERENCES products(id)
 );
 
-
-CREATE TABLE cart_items (
-  id int(11) NOT NULL,
-  user_id int(11) DEFAULT NULL,
-  product_id int(11) DEFAULT NULL,
-  quantity int(11) DEFAULT NULL
-);
-
 CREATE TABLE orders (
   id INT NOT NULL AUTO_INCREMENT PRIMARY KEY,
   user_id INT,
