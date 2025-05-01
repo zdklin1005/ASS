@@ -5,6 +5,14 @@ CREATE TABLE users (
   password VARCHAR(255)
 );
 
+CREATE TABLE products (
+  id INT NOT NULL AUTO_INCREMENT PRIMARY KEY,
+  name VARCHAR(100),
+  description TEXT,
+  price DECIMAL(10,2),
+  image VARCHAR(255)
+);
+
 CREATE TABLE cart (
   id INT NOT NULL AUTO_INCREMENT PRIMARY KEY,
   user_id INT,
@@ -14,11 +22,13 @@ CREATE TABLE cart (
   FOREIGN KEY (product_id) REFERENCES products(id)
 );
 
+
 CREATE TABLE orders (
   id INT NOT NULL AUTO_INCREMENT PRIMARY KEY,
   user_id INT,
   total_price DECIMAL(10,2),
-  created_at DATETIME DEFAULT CURRENT_TIMESTAMP
+  created_at DATETIME DEFAULT CURRENT_TIMESTAMP,
+  FOREIGN KEY (user_id) REFERENCES users(id)
 );
 
 
@@ -27,25 +37,19 @@ CREATE TABLE order_items (
   order_id INT,
   product_id INT,
   quantity INT,
-  price DECIMAL(10,2)
-);
-
-
-CREATE TABLE products (
-  id INT NOT NULL AUTO_INCREMENT PRIMARY KEY,
-  name VARCHAR(100),
-  description TEXT,
   price DECIMAL(10,2),
-  image VARCHAR(255)
+  FOREIGN KEY (order_id) REFERENCES orders(id),
+  FOREIGN KEY (product_id) REFERENCES products(id)
 );
+
 
 CREATE TABLE payment (
-    payment_id INT NOT NULL AUTO_INCREMENT PRIMARY KEY,
-    order_id INT,
-    payment_method VARCHAR(100),
-    amount DECIMAL(10,2),
-    payment_date DATETIME DEFAULT CURRENT_TIMESTAMP,
-    FOREIGN KEY (order_id) REFERENCES orders(id)
+  payment_id INT NOT NULL AUTO_INCREMENT PRIMARY KEY,
+  order_id int(11) DEFAULT NULL,
+  payment_method varchar(100) DEFAULT NULL,
+  amount decimal(10,2) DEFAULT NULL,
+  payment_date datetime DEFAULT current_timestamp(),
+  FOREIGN KEY (order_id) REFERENCES orders(id)
 );
 
 
