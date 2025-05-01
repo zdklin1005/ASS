@@ -47,7 +47,14 @@ CREATE TABLE products (
   image VARCHAR(255)
 );
 
-
+CREATE TABLE payment (
+    payment_id INT NOT NULL AUTO_INCREMENT PRIMARY KEY,
+    order_id INT,
+    payment_method VARCHAR(100),
+    amount DECIMAL(10,2),
+    payment_date DATETIME DEFAULT CURRENT_TIMESTAMP,
+    FOREIGN KEY (order_id) REFERENCES orders(id)
+);
 
 
 INSERT INTO products (name, description, price, image) VALUES
