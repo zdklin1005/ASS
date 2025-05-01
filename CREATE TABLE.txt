@@ -57,6 +57,7 @@ CREATE TABLE payment (
 );
 
 
+
 INSERT INTO products (name, description, price, image) VALUES
 ('Graduation Gown', 'Premium quality graduation gown with TARUMT logo.', 99.90, 'gown.jpg'),
 ('Graduation Cap', 'Elegant black cap for your convocation.', 29.90, 'cap.jpg'),
