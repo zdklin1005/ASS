@@ -60,9 +60,9 @@ session_start();
     <div class="content">
         <?php if (isset($_SESSION['user_id'])): ?>
             <p>Hello, <strong><?= htmlspecialchars($_SESSION['user_name']) ?></strong>!</p>
-            <a href="products.php">View Products</a>
-            <a href="cart.php">Cart</a>
-            <a href="logout.php">Logout</a>
+            <a href="products.php">🛒 View Products</a>
+            <a href="cart.php">🧺 Cart</a>
+            <a href="logout.php">🚪 Logout</a>
         <?php else: ?>
             <a href="login.php">🔐 Login</a>
             <a href="register.php">📝 Register</a>
