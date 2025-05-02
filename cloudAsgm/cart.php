@@ -167,7 +167,7 @@ $items = $stmt->fetchAll();
 
     <div class="nav-links">
         <a href="products.php">🛍 Continue Shopping</a> |
-        <a href="index.php">🏠 Back to HomePage</a>
+        <a href="index.php">🏠 HomePage</a>
     </div>
 
     <form method="post">
