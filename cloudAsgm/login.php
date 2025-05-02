@@ -125,7 +125,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
 </head>
 <body>
 
-    <h2>Login</h2>
+    <h2>🔐 Login</h2>
 
     <div class="container">
         <?php if(!empty($registerMessage)): ?>
@@ -141,7 +141,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
             <input type="password" name="password" placeholder="Password" required><br>
             <button type="submit">Login</button>
         </form>
-        <a href="index.php">Back to HomePage</a>
+        <a href="index.php">🏠 HomePage</a>
     </div>
 
 </body>
