@@ -219,7 +219,7 @@ $ordered_items = $display_stmt->fetchAll();
     <br>
     <div class="nav-links">
         <a href="products.php">🛍 Continue Shopping</a> |
-        <a href="index.php">🏠 Back to HomePage</a>
+        <a href="index.php">🏠 HomePage</a>
     </div>
 </body>
 </html>
