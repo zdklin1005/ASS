@@ -55,7 +55,7 @@ session_start();
 </head>
 
 <body>
-    <h1>🎓 HAHAWelcome to Gownzilla Shop 🎓</h1>
+    <h1>🎓 Welcome to Gownzilla Shop 🎓</h1>
 
     <div class="content">
         <?php if (isset($_SESSION['user_id'])): ?>
