@@ -17,6 +17,11 @@ $stmt = $pdo->prepare("
 $stmt->execute([$user_id]);
 $items = $stmt->fetchAll();
 
+if(empty($items)){
+    header("Location: cart.php");
+    exit;
+}
+
 $grand_total = 0;
 foreach ($items as $item) {
     $grand_total += $item['price'] * $item['quantity'];
@@ -120,6 +125,38 @@ foreach ($items as $item) {
         }
       }
     }
+
+    window.addEventListener('DOMContentLoaded', () => {
+        const expiryInput = document.querySelector('input[name="expiry"]');
+        const errorSpan = document.getElementById('expiry-error');
+
+        expiryInput.addEventListener('blur', function () {
+          const value = this.value.trim();
+          errorSpan.textContent = '';
+
+          const parts = value.split('/');
+          if (parts.length !== 2) {
+            errorSpan.textContent = "Invalid format. Use MM/YY.";
+            return;
+          }
+
+          const mm = parseInt(parts[0], 10);
+          const yy = parseInt(parts[1], 10);
+
+          if (isNaN(mm) || isNaN(yy) || mm < 1 || mm > 12) {
+            errorSpan.textContent = "Invalid month. Use MM between 01 and 12.";
+            return;
+          }
+
+          const inputDate = new Date(2000 + yy, mm); // first day of next month
+          const today = new Date();
+          const oneYearLater = new Date(today.getFullYear(), today.getMonth() + 12);
+
+          if (inputDate <= oneYearLater) {
+            errorSpan.textContent = "Expiry date must be at least 1 year in the future.";
+          }
+        });
+      });
   </script>
 </head>
 
@@ -137,13 +174,14 @@ foreach ($items as $item) {
 
       <div id="creditFields" class="dynamic">
           <label>Card Number:</label>
-          <input type="text" name="card_number" pattern="\d{16}" maxlength="16">
+          <input type="text" name="card_number" pattern="\d{16}" placeholder="1111222233334444" maxlength="16">
 
           <label>Expiry Date (MM/YY):</label>
           <input type="text" name="expiry" pattern="(0[1-9]|1[0-2])\/\d{2}" placeholder="MM/YY">
+          <span id="expiry-error" style="color: red;"></span>
 
           <label>CVV:</label>
-          <input type="text" name="cvv" pattern="\d{3}" maxlength="3">
+          <input type="text" name="cvv" pattern="\d{3}" placeholder="123" maxlength="3">
       </div>
 
       <div id="paypalFields" class="dynamic">
