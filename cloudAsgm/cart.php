@@ -203,8 +203,12 @@ $items = $stmt->fetchAll();
         </div>
 
         <div class="actions">
-            <button type="submit">Update Cart</button>
-            <a href="payment.php"><button type="button">Proceed to Payment</button></a>
+            <?php if(!empty($item)): ?>
+                <button type="submit">Update Cart</button>
+                <a href="payment.php"><button type="button">Proceed to Payment</button></a>
+            <?php else: ?>
+                <p style="color:red; font-weight: bold;">Your cart is empty.</p>
+            <?php endif; ?>
         </div>
     </form>
 
