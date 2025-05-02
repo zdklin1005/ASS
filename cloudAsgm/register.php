@@ -108,7 +108,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
 </head>
 <body>
 
-    <h2>Create Account</h2>
+    <h2>📝 Create Account</h2>
 
     <div class="container">
         <form method="post">
@@ -118,7 +118,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
                    title="Password must be 6-15 characters (including letter & number)" placeholder="Password" required><br>
             <button type="submit">Create</button>
         </form>
-        <a href="index.php">Back to HomePage</a>
+        <a href="index.php">🏠 HomePage</a>
     </div>
 
 </body>
