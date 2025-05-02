@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: May 01, 2025 at 03:05 PM
+-- Generation Time: May 02, 2025 at 09:38 AM
 -- Server version: 10.4.32-MariaDB
 -- PHP Version: 8.2.12
 
@@ -62,7 +62,10 @@ INSERT INTO `orders` (`id`, `user_id`, `total_price`, `created_at`) VALUES
 (8, 7, 39.80, '2025-05-01 18:07:22'),
 (9, 6, 119.80, '2025-05-01 18:16:16'),
 (10, 6, 69.80, '2025-05-01 18:19:00'),
-(11, 6, 99.90, '2025-05-01 18:21:54');
+(11, 6, 99.90, '2025-05-01 18:21:54'),
+(12, 7, 144.90, '2025-05-01 21:36:29'),
+(13, 7, 19.90, '2025-05-01 21:37:44'),
+(14, 7, 20.00, '2025-05-02 12:42:23');
 
 -- --------------------------------------------------------
 
@@ -98,7 +101,11 @@ INSERT INTO `order_items` (`id`, `order_id`, `product_id`, `quantity`, `price`) 
 (13, 9, 4, 1, 19.90),
 (14, 10, 3, 1, 39.90),
 (15, 10, 2, 1, 29.90),
-(16, 11, 1, 1, 99.90);
+(16, 11, 1, 1, 99.90),
+(17, 12, 1, 1, 99.90),
+(18, 12, 6, 1, 45.00),
+(19, 13, 4, 1, 19.90),
+(20, 14, 8, 1, 20.00);
 
 -- --------------------------------------------------------
 
@@ -129,7 +136,10 @@ INSERT INTO `payment` (`payment_id`, `order_id`, `payment_method`, `amount`, `pa
 (8, 8, 'tng', 39.80, '2025-05-01 18:07:22'),
 (9, 9, 'paypal', 119.80, '2025-05-01 18:16:16'),
 (10, 10, 'paypal', 69.80, '2025-05-01 18:19:00'),
-(11, 11, 'paypal', 99.90, '2025-05-01 18:21:54');
+(11, 11, 'paypal', 99.90, '2025-05-01 18:21:54'),
+(12, 12, 'credit', 144.90, '2025-05-01 21:36:29'),
+(13, 13, 'paypal', 19.90, '2025-05-01 21:37:44'),
+(14, 14, 'paypal', 20.00, '2025-05-02 12:42:23');
 
 -- --------------------------------------------------------
 
@@ -152,9 +162,12 @@ CREATE TABLE `products` (
 INSERT INTO `products` (`id`, `name`, `description`, `price`, `image`) VALUES
 (1, 'Graduation Gown', 'Premium quality graduation gown with TARUMT logo.', 99.90, 'gown.jpg'),
 (2, 'Graduation Cap', 'Elegant black cap for your convocation.', 29.90, 'cap.jpg'),
-(3, 'TARUMT T-Shirt', 'Comfortable cotton t-shirt with university branding.', 39.90, 'tshirt.jpg'),
+(3, 'Souvenir', 'Cute souvenir', 15.00, 'souvenir.jpg'),
 (4, 'Photo Frame', 'Wooden frame for graduation photos.', 19.90, 'frame.jpg'),
-(5, 'Keychain', 'Metal keychain with TARUMT emblem.', 9.90, 'keychain.jpg');
+(5, 'Keychain', 'Metal keychain with TARUMT emblem.', 9.90, 'keychain.jpg'),
+(6, 'Graduation Flower Bouquet', 'Fresh flower bouquet wrapped in ribbon', 45.00, 'flower.jpg'),
+(7, 'Graduation Bear', 'Cute graduation bear with cap and sash', 35.00, 'bear.jpg'),
+(8, 'Sash Ribbon', 'Decorative ribbon with \"Graduate\" text', 20.00, 'ribbon.jpg');
 
 -- --------------------------------------------------------
 
@@ -233,31 +246,31 @@ ALTER TABLE `users`
 -- AUTO_INCREMENT for table `cart`
 --
 ALTER TABLE `cart`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=33;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=37;
 
 --
 -- AUTO_INCREMENT for table `orders`
 --
 ALTER TABLE `orders`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=12;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=15;
 
 --
 -- AUTO_INCREMENT for table `order_items`
 --
 ALTER TABLE `order_items`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=17;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=21;
 
 --
 -- AUTO_INCREMENT for table `payment`
 --
 ALTER TABLE `payment`
-  MODIFY `payment_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=12;
+  MODIFY `payment_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=15;
 
 --
 -- AUTO_INCREMENT for table `products`
 --
 ALTER TABLE `products`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=9;
 
 --
 -- AUTO_INCREMENT for table `users`
