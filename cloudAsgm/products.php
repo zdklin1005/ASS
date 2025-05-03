@@ -53,7 +53,8 @@ $products = $stmt->fetchAll();
             font-family: 'Poppins', sans-serif;
             margin: 0;
             padding: 20px;
-            background: #f0f4ff;
+            background: url('images/background.jpg') no-repeat center center fixed;
+            background-size: cover;
             color: var(--text-dark);
         }
 
@@ -61,19 +62,24 @@ $products = $stmt->fetchAll();
             text-align: center;
             color: var(--primary-blue);
             font-size: 2.5rem;
-            margin-bottom: 30px;
+            margin-bottom: 5px;
         }
 
         .nav-links {
             text-align: center;
-            margin-bottom: 20px;
+            margin-top: -10px;
+            margin-bottom: 30px;
+            font-size: 1rem;
+            font-weight: 600;
         }
 
         .nav-links a {
-            margin: 0 10px;
             text-decoration: none;
             color: var(--primary-blue);
-            font-weight: 600;
+            margin: 0 10px;
+            padding: 4px 8px;
+            border-radius: 6px;
+            transition: background-color 0.3s ease;
         }
 
         .nav-links a:hover {
@@ -88,11 +94,14 @@ $products = $stmt->fetchAll();
         }
 
         .product-card {
-            background-color: rgba(255, 255, 255, 0.9);
+            background-color: rgba(255, 255, 255, 0.95);
             border-radius: 12px;
             box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
             padding: 20px;
-            max-width: 300px;
+            width: 280px;
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
             text-align: center;
             transition: transform 0.3s ease;
         }
@@ -103,12 +112,14 @@ $products = $stmt->fetchAll();
 
         .product-card h3 {
             color: var(--primary-blue);
-            font-size: 1.3rem;
+            font-size: 1.2rem;
             margin-bottom: 10px;
         }
 
         .product-card img {
-            max-width: 100%;
+            width: 100%;
+            height: 200px;
+            object-fit: cover;
             border-radius: 10px;
             margin-bottom: 10px;
         }
@@ -116,7 +127,12 @@ $products = $stmt->fetchAll();
         .product-card p {
             font-size: 0.95rem;
             color: #333;
-            margin-bottom: 15px;
+            margin-bottom: 20px;
+            flex-grow: 1;
+        }
+
+        .product-card form {
+            margin-top: auto;
         }
 
         .product-card button {
@@ -128,6 +144,7 @@ $products = $stmt->fetchAll();
             font-weight: 600;
             cursor: pointer;
             transition: background-color 0.3s ease;
+            width: 100%;
         }
 
         .product-card button:hover {
@@ -135,28 +152,28 @@ $products = $stmt->fetchAll();
         }
     </style>
 </head>
+
 <body>
+    <h2>Products</h2>
+    <br>
 
-<h2>Products</h2>
+    <div class="nav-links">
+        <a href="index.php">🏠 HomePage</a> |
+        <a href="cart.php">🛒 View Cart</a>
+    </div>
 
-<div class="nav-links">
-    <a href="index.php">🏠 HomePage</a> |
-    <a href="cart.php">🛒 View Cart</a>
-</div>
-
-<div class="products">
-    <?php foreach ($products as $product): ?>
-        <div class="product-card">
-            <h3><?= htmlspecialchars($product['name']) ?> - RM<?= $product['price'] ?></h3>
-            <img src="http://web-aws-s3-bucket.s3-website-us-east-1.amazonaws.com/cloudAsgm/images/<?= htmlspecialchars($product['image']) ?>" alt="<?= $product['name'] ?>">
-            <p><?= htmlspecialchars($product['description']) ?></p>
-            <form method="post">
-                <input type="hidden" name="product_id" value="<?= $product['id'] ?>">
-                <button type="submit">Add to Cart</button>
-            </form>
-        </div>
-    <?php endforeach; ?>
-</div>
-
+    <div class="products">
+        <?php foreach ($products as $product): ?>
+            <div class="product-card">
+                <h3><?= htmlspecialchars($product['name']) ?> - RM<?= $product['price'] ?></h3>
+                <img src="images/<?= htmlspecialchars($product['image']) ?>" alt="<?= $product['name'] ?>">
+                <p><?= htmlspecialchars($product['description']) ?></p>
+                <form method="post">
+                    <input type="hidden" name="product_id" value="<?= $product['id'] ?>">
+                    <button type="submit">Add to Cart</button>
+                </form>
+            </div>
+        <?php endforeach; ?>
+    </div>
 </body>
 </html>
