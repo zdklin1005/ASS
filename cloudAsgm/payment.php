@@ -40,6 +40,8 @@ foreach ($items as $item) {
         --accent-blue: #6ab7ff;
         --white: #ffffff;
         --text-dark: #1e1e2f;
+        --bg-light: #f0f4ff;
+        --border-light: #ccc;
     }
 
     * {
@@ -48,9 +50,9 @@ foreach ($items as $item) {
 
     body {
         font-family: 'Poppins', sans-serif;
-        margin: 0;
-        padding: 30px;
-        background-color: #f0f4ff;
+        background: url('images/background.jpg') no-repeat center center fixed;
+        background-size: cover;
+        padding: 20px;
         color: var(--text-dark);
     }
 
@@ -64,34 +66,37 @@ foreach ($items as $item) {
     form {
         max-width: 500px;
         margin: 0 auto;
-        padding: 30px;
+        padding: 40px; /* Increased padding */
         background-color: var(--white);
-        border-radius: 10px;
-        box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+        border-radius: 16px; /* Increased border-radius */
+        box-shadow: 0 10px 40px rgba(0, 0, 0, 0.1); /* Enhanced shadow */
     }
 
     label {
         display: block;
-        margin-top: 15px;
+        margin-top: 20px; /* Increased margin-top */
         font-weight: 600;
         color: var(--primary-blue);
     }
 
-    select, input[type="text"], input[type="email"], input[type="password"] {
+    select,
+    input[type="text"],
+    input[type="email"],
+    input[type="password"] {
         width: 100%;
-        padding: 10px;
-        margin-top: 5px;
-        border: 1px solid #ccc;
+        padding: 14px 16px; /* Increased padding */
+        margin-top: 10px; /* Adjusted margin */
+        border: 1px solid var(--border-light);
         border-radius: 8px;
         font-size: 1rem;
     }
 
     button {
-        margin-top: 25px;
+        margin-top: 30px; /* Increased margin-top */
         width: 100%;
-        padding: 12px;
+        padding: 16px; /* Increased padding */
         background-color: var(--primary-blue);
-        color: white;
+        color: var(--white);
         font-size: 1.1rem;
         border: none;
         border-radius: 8px;
@@ -106,6 +111,10 @@ foreach ($items as $item) {
 
     .dynamic {
         display: none;
+    }
+
+    #expiry-error {
+        color: red;
     }
   </style>
 
@@ -161,7 +170,7 @@ foreach ($items as $item) {
 </head>
 
 <body>
-  <h2>Graduation Products Payment</h2>
+  <h2>Payment</h2>
 
   <form method="POST" action="checkout.php">
       <label>Payment Method:</label>
@@ -201,6 +210,5 @@ foreach ($items as $item) {
 
       <button type="submit">Pay RM<?= number_format($grand_total, 2) ?></button>
   </form>
-
 </body>
 </html>
