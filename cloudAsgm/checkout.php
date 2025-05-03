@@ -72,6 +72,8 @@ $ordered_items = $display_stmt->fetchAll();
             --accent-blue: #6ab7ff;
             --white: #ffffff;
             --text-dark: #1e1e2f;
+            --success-green: #5cb85c;
+            --danger-red: #e74c3c;
         }
 
         * {
@@ -82,7 +84,8 @@ $ordered_items = $display_stmt->fetchAll();
             font-family: 'Poppins', sans-serif;
             margin: 0;
             padding: 20px;
-            background: #f0f4ff;
+            background: url('images/background.jpg') no-repeat center center fixed;
+            background-size: cover;
             color: var(--text-dark);
         }
 
@@ -128,14 +131,6 @@ $ordered_items = $display_stmt->fetchAll();
         table th {
             background-color: var(--primary-blue);
             color: white;
-        }
-
-        input[type="number"] {
-            width: 60px;
-            padding: 6px;
-            border: 1px solid #ccc;
-            border-radius: 6px;
-            text-align: center;
         }
 
         .actions {
@@ -184,6 +179,14 @@ $ordered_items = $display_stmt->fetchAll();
         a.remove-link:hover {
             text-decoration: underline;
         }
+
+        img {
+            width: 100%;
+            max-width: 500px;
+            margin: 20px auto;
+            display: block;
+            border-radius: 8px;
+        }
     </style>
 </head>
 <body>
@@ -218,7 +221,7 @@ $ordered_items = $display_stmt->fetchAll();
 
     <br>
     <div class="nav-links">
-        <a href="products.php">🛍 Continue Shopping</a> |
+        <a href="products.php">🛍️️ Continue Shopping</a> |
         <a href="index.php">🏠 HomePage</a>
     </div>
 </body>
