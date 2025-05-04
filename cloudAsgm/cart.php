@@ -61,7 +61,7 @@ $items = $stmt->fetchAll();
 
         body {
             font-family: 'Poppins', sans-serif;
-            background: url('images/background.jpg') no-repeat center center fixed;
+            background: url('https://web-aws-s3-bucket.s3.us-east-1.amazonaws.com/cloudAsgm/images/background.jpg') no-repeat center center fixed;
             background-size: cover;
             padding: 20px;
             color: var(--text-dark);
