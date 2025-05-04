@@ -17,7 +17,6 @@ if (!$payment_method || $grand_total <= 0) {
 
 $grand_total = floatval(str_replace(',', '', $grand_total));
 
-// Load cart items with product ID
 $stmt = $pdo->prepare("
     SELECT products.id AS product_id, products.name, products.price, cart.quantity 
     FROM cart 
@@ -30,26 +29,21 @@ if (empty($items)) {
     die("Your cart is empty.");
 }
 
-// 1. Insert into orders table
 $order_stmt = $pdo->prepare("INSERT INTO orders (user_id, total_price) VALUES (?, ?)");
 $order_stmt->execute([$user_id, $grand_total]);
 $order_id = $pdo->lastInsertId();
 
-// 2. Insert into order_items table using product_id
 $order_item_stmt = $pdo->prepare("INSERT INTO order_items (order_id, product_id, quantity, price) VALUES (?, ?, ?, ?)");
 foreach ($items as $item) {
     $order_item_stmt->execute([$order_id, $item['product_id'], $item['quantity'], $item['price']]);
 }
 
-// 3. Insert into payment table
 $payment_stmt = $pdo->prepare("INSERT INTO payment (order_id, payment_method, amount) VALUES (?, ?, ?)");
 $payment_stmt->execute([$order_id, $payment_method, $grand_total]);
 
-// 4. Clear cart
 $clear_stmt = $pdo->prepare("DELETE FROM cart WHERE user_id = ?");
 $clear_stmt->execute([$user_id]);
 
-// 5. Fetch order items again for display (join with products)
 $display_stmt = $pdo->prepare("
     SELECT p.name, oi.quantity, oi.price 
     FROM order_items oi 
@@ -84,7 +78,7 @@ $ordered_items = $display_stmt->fetchAll();
             font-family: 'Poppins', sans-serif;
             margin: 0;
             padding: 20px;
-            background: url('images/background.jpg') no-repeat center center fixed;
+            background: url('https://web-aws-s3-bucket.s3.us-east-1.amazonaws.com/cloudAsgm/images/background.jpg') no-repeat center center fixed;
             background-size: cover;
             color: var(--text-dark);
         }
