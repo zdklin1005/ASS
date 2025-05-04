@@ -50,7 +50,7 @@ foreach ($items as $item) {
 
     body {
         font-family: 'Poppins', sans-serif;
-        background: url('images/background.jpg') no-repeat center center fixed;
+        background: url('https://web-aws-s3-bucket.s3.us-east-1.amazonaws.com/cloudAsgm/images/background.jpg') no-repeat center center fixed;
         background-size: cover;
         padding: 20px;
         color: var(--text-dark);
@@ -66,15 +66,15 @@ foreach ($items as $item) {
     form {
         max-width: 500px;
         margin: 0 auto;
-        padding: 40px; /* Increased padding */
+        padding: 40px; 
         background-color: var(--white);
-        border-radius: 16px; /* Increased border-radius */
-        box-shadow: 0 10px 40px rgba(0, 0, 0, 0.1); /* Enhanced shadow */
+        border-radius: 16px; 
+        box-shadow: 0 10px 40px rgba(0, 0, 0, 0.1); 
     }
 
     label {
         display: block;
-        margin-top: 20px; /* Increased margin-top */
+        margin-top: 20px; 
         font-weight: 600;
         color: var(--primary-blue);
     }
@@ -84,17 +84,17 @@ foreach ($items as $item) {
     input[type="email"],
     input[type="password"] {
         width: 100%;
-        padding: 14px 16px; /* Increased padding */
-        margin-top: 10px; /* Adjusted margin */
+        padding: 14px 16px; 
+        margin-top: 10px; 
         border: 1px solid var(--border-light);
         border-radius: 8px;
         font-size: 1rem;
     }
 
     button {
-        margin-top: 30px; /* Increased margin-top */
+        margin-top: 30px; 
         width: 100%;
-        padding: 16px; /* Increased padding */
+        padding: 16px; 
         background-color: var(--primary-blue);
         color: var(--white);
         font-size: 1.1rem;
