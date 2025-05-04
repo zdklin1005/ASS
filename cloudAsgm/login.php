@@ -37,7 +37,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
             margin: 0;
             padding: 0;
             font-family: 'Poppins', sans-serif;
-            background: url('images/background.jpg') no-repeat center center fixed;
+            background: url('https://web-aws-s3-bucket.s3.us-east-1.amazonaws.com/cloudAsgm/images/background.jpg') no-repeat center center fixed;
             background-size: cover;
             height: 100vh;
             display: flex;
@@ -52,16 +52,16 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
             width: 100%;
             height: 100%;
             background: linear-gradient(145deg, rgba(255, 255, 255, 0.7), rgba(74, 144, 226, 0.7));
-            z-index: -1; /* Ensures the overlay is behind the content */
+            z-index: -1; 
         }
 
         .login-box {
             background: #fff;
-            padding: 60px; /* Increased padding */
+            padding: 60px;
             border-radius: 16px;
             box-shadow: 0 10px 40px rgba(0, 0, 0, 0.1);
             width: 100%;
-            max-width: 500px; /* Increased max-width */
+            max-width: 500px; 
             text-align: center;
         }
 
@@ -95,7 +95,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
         button {
             background-color: #4a90e2;
             color: white;
-            padding: 14px; /* Increased padding for the button */
+            padding: 14px; 
             border: none;
             border-radius: 8px;
             font-size: 1rem;
