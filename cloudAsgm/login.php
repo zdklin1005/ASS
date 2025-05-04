@@ -111,6 +111,9 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
         .link {
             margin-top: 20px;
             font-size: 0.95rem;
+            display: flex;
+            justify-content: center;
+            gap: 40px; 
         }
 
         .link a {
@@ -184,6 +187,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
         </form>
 
         <div class="link">
+            <a href="register.php">📝 Register</a>
             <a href="index.php">🏠 HomePage</a>
         </div>
     </div>
