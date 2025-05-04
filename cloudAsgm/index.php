@@ -189,6 +189,7 @@ try {
         
         <div class="auth-buttons">
             <?php if (isset($_SESSION['user_id'])): ?>
+                <p>Hello, <?= $_SESSION['user_name'] ?>!</p>
                 <a href="products.php">🛒 Products</a>
                 <a href="cart.php">🧺 Cart</a>
                 <a href="logout.php">🚪 Logout</a>
