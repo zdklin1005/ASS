@@ -166,7 +166,7 @@ $products = $stmt->fetchAll();
         <?php foreach ($products as $product): ?>
             <div class="product-card">
                 <h3><?= htmlspecialchars($product['name']) ?> - RM<?= $product['price'] ?></h3>
-                <img src="http://web-aws-s3-bucket.s3-website-region.amazonaws.com/images/<?= htmlspecialchars($product['image']) ?>" alt="<?= $product['name'] ?>">
+                <img src="https://web-aws-s3-bucket.s3.us-east-1.amazonaws.com/cloudAsgm/images/<?= htmlspecialchars($product['image']) ?>" alt="<?= $product['name'] ?>">
                 <p><?= htmlspecialchars($product['description']) ?></p>
                 <form method="post">
                     <input type="hidden" name="product_id" value="<?= $product['id'] ?>">
