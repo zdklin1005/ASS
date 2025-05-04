@@ -1,5 +1,4 @@
 <?php
-session_start();
 require 'db.php';
 
 if ($_SERVER['REQUEST_METHOD'] == 'POST') {
@@ -10,21 +9,13 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
     if(!preg_match('/^(?=.*[A-Za-z])(?=.*\d)[A-Za-z\d]{6,15}$/', $password)){
         die("Password must be 6-15 characters (including letter & number)");
     }
-
-        $checkStmt = $pdo->prepare("SELECT id FROM users WHERE email = ?");
-    $checkStmt->execute([$email]);
-    if ($checkStmt->fetch()) {
-        $_SESSION['error'] = "Email already exists!";
-        header("Location: register.php");
-        exit;
-    }
     
     $hashedPass = password_hash($password, PASSWORD_DEFAULT);
 
     $stmt = $pdo->prepare("INSERT INTO users (name, email, password) VALUES (?, ?, ?)");
     $stmt->execute([$name, $email, $hashedPass]);
 
-
+    session_start();
     $_SESSION['register_success'] = "Registration Successful! Please Login.";
     header("Location: login.php");
     exit;
@@ -42,7 +33,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
             margin: 0;
             padding: 0;
             font-family: 'Poppins', sans-serif;
-            background: url('images/background.jpg') no-repeat center center fixed;
+            background: url('https://web-aws-s3-bucket.s3.us-east-1.amazonaws.com/cloudAsgm/images/background.jpg') no-repeat center center fixed;
             background-size: cover;
             height: 100vh;
             display: flex;
@@ -57,16 +48,16 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
             width: 100%;
             height: 100%;
             background: linear-gradient(145deg, rgba(255, 255, 255, 0.7), rgba(74, 144, 226, 0.7));
-            z-index: -1; /* Ensures the overlay is behind the content */
+            z-index: -1; 
         }
 
         .login-box {
             background: #fff;
-            padding: 60px; /* Increased padding */
+            padding: 60px; 
             border-radius: 16px;
             box-shadow: 0 10px 40px rgba(0, 0, 0, 0.1);
             width: 100%;
-            max-width: 500px; /* Increased max-width */
+            max-width: 500px; 
             text-align: center;
         }
 
@@ -86,7 +77,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
         input[type="text"],
         input[type="email"],
         input[type="password"] {
-            padding: 14px 16px; /* Increased padding for inputs */
+            padding: 14px 16px; 
             border-radius: 8px;
             border: 1px solid #ccc;
             font-size: 1rem;
@@ -101,7 +92,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
         button {
             background-color: #4a90e2;
             color: white;
-            padding: 14px; /* Increased padding for the button */
+            padding: 14px;
             border: none;
             border-radius: 8px;
             font-size: 1rem;
@@ -175,13 +166,6 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
             <span class="login-text">Create Account</span>
         </div>
 
-                <?php if (isset($_SESSION['error'])): ?>
-           <script>
-                alert("<?= htmlspecialchars($_SESSION['error']) ?>");
-           </script>
-            <?php unset($_SESSION['error']); ?>
-        <?php endif; ?>
-        
         <?php if (isset($_SESSION['register_success'])): ?>
             <div class="message"><?= htmlspecialchars($_SESSION['register_success']) ?></div>
             <?php unset($_SESSION['register_success']); ?>
