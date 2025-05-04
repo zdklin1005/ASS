@@ -1,4 +1,5 @@
 <?php
+session_start();
 require 'db.php';
 
 if ($_SERVER['REQUEST_METHOD'] == 'POST') {
@@ -9,13 +10,21 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
     if(!preg_match('/^(?=.*[A-Za-z])(?=.*\d)[A-Za-z\d]{6,15}$/', $password)){
         die("Password must be 6-15 characters (including letter & number)");
     }
+
+        $checkStmt = $pdo->prepare("SELECT id FROM users WHERE email = ?");
+    $checkStmt->execute([$email]);
+    if ($checkStmt->fetch()) {
+        $_SESSION['error'] = "Email already exists!";
+        header("Location: register.php");
+        exit;
+    }
     
     $hashedPass = password_hash($password, PASSWORD_DEFAULT);
 
     $stmt = $pdo->prepare("INSERT INTO users (name, email, password) VALUES (?, ?, ?)");
     $stmt->execute([$name, $email, $hashedPass]);
 
-    session_start();
+
     $_SESSION['register_success'] = "Registration Successful! Please Login.";
     header("Location: login.php");
     exit;
@@ -166,6 +175,13 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
             <span class="login-text">Create Account</span>
         </div>
 
+                <?php if (isset($_SESSION['error'])): ?>
+           <script>
+                alert("<?= htmlspecialchars($_SESSION['error']) ?>");
+           </script>
+            <?php unset($_SESSION['error']); ?>
+        <?php endif; ?>
+        
         <?php if (isset($_SESSION['register_success'])): ?>
             <div class="message"><?= htmlspecialchars($_SESSION['register_success']) ?></div>
             <?php unset($_SESSION['register_success']); ?>
