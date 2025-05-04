@@ -19,7 +19,7 @@ try {
     <style>
         body {
             font-family: 'Poppins', sans-serif;
-            background-image: url('images/background.jpg');
+            background-image: url('https://web-aws-s3-bucket.s3.us-east-1.amazonaws.com/cloudAsgm/images/background.jpg');
             background-size: cover;
             background-position: center;
             background-attachment: fixed;
@@ -110,7 +110,6 @@ try {
             margin-bottom: 30px;
         }
 
-        /* Product Section */
         h2 {
             color: #66ccff;
             margin-top: 40px;
