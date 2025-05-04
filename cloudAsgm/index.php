@@ -206,7 +206,7 @@ try {
         <?php foreach ($products as $product): ?>
             <div class="product-card">
                 <h3><?= htmlspecialchars($product['name']) ?> - RM<?= $product['price'] ?></h3>
-                <img src="http://your-bucket.s3-website-region.amazonaws.com/images/<?= htmlspecialchars($product['image']) ?>" alt="<?= $product['name'] ?>">
+                <img src="http://web-aws-s3-bucket.s3-website-region.amazonaws.com/images/<?= htmlspecialchars($product['image']) ?>" alt="<?= $product['name'] ?>">
                 <p><?= htmlspecialchars($product['description']) ?></p>
                 <?php if (isset($_SESSION['user_id'])): ?>
                     <form method="post" action="products.php">
