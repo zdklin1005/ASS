@@ -53,7 +53,7 @@ $products = $stmt->fetchAll();
             font-family: 'Poppins', sans-serif;
             margin: 0;
             padding: 20px;
-            background: url('images/background.jpg') no-repeat center center fixed;
+            background: url('https://web-aws-s3-bucket.s3.us-east-1.amazonaws.com/cloudAsgm/images/background.jpg') no-repeat center center fixed;
             background-size: cover;
             color: var(--text-dark);
         }
